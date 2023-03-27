@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const TestModal = () => {
   const [isSelected, setIsSelected] = useState("ins");
@@ -95,9 +96,14 @@ const TestModal = () => {
               </h3>
 
               <div className="text-right ">
-                <button className="py-2 px-4 rounded-md font-semibold text-white bg-blue-600 border-none ">
-                  Begin Test
-                </button>
+                <Link to="liveTest">
+                  <label
+                    htmlFor="test-modal"
+                    className="py-2 px-4 rounded-md font-semibold text-white bg-blue-600 border-none "
+                  >
+                    Begin Test
+                  </label>
+                </Link>
               </div>
             </>
           ) : (
