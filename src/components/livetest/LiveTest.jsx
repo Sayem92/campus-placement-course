@@ -28,7 +28,7 @@ const LiveTest = () => {
           setMainData(filterData);
         }
       });
-  }, [selectId]);
+  }, [selectId, load]);
 
   // useEffect(() => {
   //   const checkTheme = JSON.parse(localStorage.getItem(`num${selectId}q`));
@@ -99,6 +99,22 @@ const LiveTest = () => {
       setTheme(newTheme);
       setMark(newMark);
       localStorage.setItem(`num${id}q`, JSON.stringify(view));
+    }
+  };
+
+  // next value---
+  const handleClick = () => {
+    if (selectId === "11") {
+      const active = "border-2 border-black rounded";
+      setFocus({ id: "1", active });
+      setSelectId("1");
+    }
+     else {
+      const number = Number(selectId);
+      const add = number + 1;
+      const active = "border-2 border-black rounded";
+      setFocus({ id: `${add}`, active });
+      setSelectId(`${add}`);
     }
   };
 
@@ -202,7 +218,10 @@ const LiveTest = () => {
             Reset
           </button>
 
-          <button className="w-full py-2 px-4 rounded-md font-semibold text-white bg-blue-600 border-none">
+          <button
+            onClick={handleClick}
+            className="w-full py-2 px-4 rounded-md font-semibold text-white bg-blue-600 border-none"
+          >
             <img className="w-10 h-10 mx-auto" src={rightArrowWhite} alt="" />{" "}
             Next
           </button>
