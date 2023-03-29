@@ -1,3 +1,4 @@
+import ErrorPage from "../components/errorPage/ErrorPage";
 import LiveTest from "../components/livetest/LiveTest";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -7,6 +8,7 @@ const { default: Main } = require("../layout/Main");
 export const router = createBrowserRouter([{
     path: '/',
     element:<Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
         {
             path:'/',
