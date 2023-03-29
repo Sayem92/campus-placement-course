@@ -15,7 +15,7 @@ const LiveTest = () => {
   const [focus, setFocus] = useState({});
   const [theme, setTheme] = useState("");
   const [mark, setMark] = useState("");
-  const [defaultValue, setDefaultValue] = useState("");
+  // const [defaultValue, setDefaultValue] = useState("");
   const [load, setLoad] = useState(false);
 
   useEffect(() => {
@@ -80,13 +80,13 @@ const LiveTest = () => {
 
     // console.log(newTheme);
     // console.log(newMark);
-    // console.log(theme);
+    console.log(theme);
     // console.log(mark);
     // console.log(defaultValue);
 
     const pinkColor = "bg-[#cd7c7c]";
-    const greenColor = "bg-[#a5cd7c]";
-    const isMark = "mark";
+    // const greenColor = "bg-[#a5cd7c]";
+    // const isMark = "mark";
     const isNotMark = "noMark";
 
     if (newTheme === "undefined" && newMark === "undefined") {
