@@ -24,7 +24,7 @@ const LiveTest = () => {
       .then((data) => {
         const allData = data?.data?.questions;
         if (allData) {
-          const filterData = allData?.filter((data) => data.id == selectId);
+          const filterData = allData?.filter((data) => data.id === selectId);
           setMainData(filterData);
         }
       });
