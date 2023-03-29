@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 const ViewModal = () => {
-  const [isSelected, setIsSelected] = useState("ins");
 
   return (
     <div>
@@ -17,28 +16,17 @@ const ViewModal = () => {
           <h3 className="text-base font-bold">Topic Test (Quiz for Git)</h3>
           <div className="flex items-center gap-5 my-2 border-b border-gray-400 pb-2">
             <h3
-              onClick={() => setIsSelected("ins")}
+            
               style={{
-                fontSize: isSelected === "ins" ? "18px" : "14px",
-                color: isSelected === "ins" ? "blue" : "black",
+                fontSize: "18px" ,
+                color: "blue" ,
               }}
               className="text-base"
             >
               Instructions
             </h3>
-            <h3
-              onClick={() => setIsSelected("syl")}
-              style={{
-                fontSize: isSelected === "syl" ? "18px" : "14px",
-                color: isSelected === "syl" ? "blue" : "black",
-              }}
-              className="text-base"
-            >
-              Syllabus
-            </h3>
           </div>
 
-          {isSelected === "ins" ? (
             <div className="text-left">
               <h3 className="text-base font-bold my-3">
                 Time allocated for this examination is 30 mins
@@ -94,12 +82,7 @@ const ViewModal = () => {
                 evaluation.
               </h3>
             </div>
-          ) : (
-            <>
-              <p className="font-bold text-black">Quant</p>
-              <p> Numbers</p>
-            </>
-          )}
+         
         </div>
       </div>
     </div>

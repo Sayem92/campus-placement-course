@@ -30,13 +30,24 @@ const LiveTest = () => {
       });
   }, [selectId, load]);
 
-  // useEffect(() => {
-  //   const checkTheme = JSON.parse(localStorage.getItem(`num${selectId}q`));
-  //   setTheme(checkTheme?.theme);
-  //   setMark(checkTheme?.mark);
-  //   // console.log(checkTheme);
-  //   setDefaultValue(checkTheme);
-  // }, [load, selectId]);
+  useEffect(() => {
+    //   const checkTheme = JSON.parse(localStorage.getItem(`num${selectId}q`));
+    //   setTheme(checkTheme?.theme);
+    //   setMark(checkTheme?.mark);
+    //   // console.log(checkTheme);
+    //   setDefaultValue(checkTheme);
+    localStorage.removeItem("num1q");
+    localStorage.removeItem("num2q");
+    localStorage.removeItem("num3q");
+    localStorage.removeItem("num4q");
+    localStorage.removeItem("num5q");
+    localStorage.removeItem("num6q");
+    localStorage.removeItem("num7q");
+    localStorage.removeItem("num8q");
+    localStorage.removeItem("num9q");
+    localStorage.removeItem("num10q");
+    localStorage.removeItem("num11q");
+  }, []);
 
   // console.log(theme);
   //   console.log(mark);
@@ -64,7 +75,7 @@ const LiveTest = () => {
     setSelected([...filteredSelected, { questionId, option, correctAnswer }]);
     // update answer
     // updateAnswer(questionId, option);
-
+    console.log(mark);
     // checkTheme and update
     const view = { id: questionId, theme: "bg-[#a5cd7c]", mark: mark };
     localStorage.setItem(`num${selectId}q`, JSON.stringify(view));
@@ -108,8 +119,7 @@ const LiveTest = () => {
       const active = "border-2 border-black rounded";
       setFocus({ id: "1", active });
       setSelectId("1");
-    }
-     else {
+    } else {
       const number = Number(selectId);
       const add = number + 1;
       const active = "border-2 border-black rounded";
@@ -161,10 +171,10 @@ const LiveTest = () => {
               <h1 className="font-bold">Single Correct</h1>
             </div>
             <div className="flex items-center">
-              <p className="text-[#4caf50] border border-gray-300 p-2 rounded-l-md">
+              <p className="text-[#4caf50] border border-gray-300 p-2 rounded-l-md" title="3.00 marks will be rewarded for correct answer">
                 + 3.00
               </p>
-              <p className="text-[#db2020] border border-l-0 border-gray-300 p-2 rounded-r-md">
+              <p className="text-[#db2020] border border-l-0 border-gray-300 p-2 rounded-r-md" title="1.00 mark will be deducted for wrong answer">
                 - 1.00
               </p>
             </div>
