@@ -64,7 +64,7 @@ const QList = ({
           className={`px-5 py-3 w-14 ${
             focus?.id === "1" ? focus?.active : ""
           } ${
-            numQAll?.num1Q === null ? "bg-gray-300" : numQAll?.num1Q?.theme
+            numQAll?.num1Q === null ? "bg-[#cd7c7c]" : numQAll?.num1Q?.theme
           }  ${
             numQAll?.num1Q?.mark === "mark" ? "border-r-8 border-black" : ""
           }`}

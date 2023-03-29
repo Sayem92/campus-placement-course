@@ -86,7 +86,7 @@ const LiveTest = () => {
   const handleSelectQuestion = (id, newTheme, newMark) => {
     setSelectId(id);
     setLoad(true);
-    const active = "border-2 border-black rounded";
+    const active = "border-2 border-black rounded bg-[#cd7c7c]";
     setFocus({ id, active });
 
     // console.log(newTheme);
@@ -124,6 +124,19 @@ const LiveTest = () => {
       const add = number + 1;
       const active = "border-2 border-black rounded";
       setFocus({ id: `${add}`, active });
+      const numQ = JSON.parse(localStorage.getItem(`num${add}q`));
+      // console.log(numQ);
+      if (numQ === null) {
+        const view = { id: `${add}`, theme: "bg-[#cd7c7c]", mark: "noMark" };
+        setTheme("bg-[#cd7c7c]");
+        setMark("noMark");
+        localStorage.setItem(`num${add}q`, JSON.stringify(view));
+      } else {
+        const view = { id: numQ?.id, theme: numQ?.theme, mark: numQ?.mark };
+        setTheme(numQ?.theme);
+        setMark(numQ?.mark);
+        localStorage.setItem(`num${add}q`, JSON.stringify(view));
+      }
       setSelectId(`${add}`);
     }
   };
@@ -171,10 +184,16 @@ const LiveTest = () => {
               <h1 className="font-bold">Single Correct</h1>
             </div>
             <div className="flex items-center">
-              <p className="text-[#4caf50] border border-gray-300 p-2 rounded-l-md" title="3.00 marks will be rewarded for correct answer">
+              <p
+                className="text-[#4caf50] border border-gray-300 p-2 rounded-l-md"
+                title="3.00 marks will be rewarded for correct answer"
+              >
                 + 3.00
               </p>
-              <p className="text-[#db2020] border border-l-0 border-gray-300 p-2 rounded-r-md" title="1.00 mark will be deducted for wrong answer">
+              <p
+                className="text-[#db2020] border border-l-0 border-gray-300 p-2 rounded-r-md"
+                title="1.00 mark will be deducted for wrong answer"
+              >
                 - 1.00
               </p>
             </div>
