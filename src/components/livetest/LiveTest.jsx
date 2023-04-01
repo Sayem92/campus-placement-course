@@ -6,6 +6,8 @@ import rightArrowWhite from "../../assets/right-arrow-white.svg";
 import QList from "../qList/QList";
 import ViewModal from "../testModal/ViewModal";
 import { useQuery } from "@tanstack/react-query";
+import { seenQuiz } from "../../api/SeenQuiz";
+import { markQuiz } from "../../api/MarkQuiz";
 
 const LiveTest = () => {
   // filter data
@@ -46,27 +48,19 @@ const LiveTest = () => {
   // console.log(selected);
 
   useEffect(() => {
-    console.log(singleData);
+    // console.log(singleData);
     if (singleData?.theme === undefined || singleData?.mark === undefined) {
-      console.log("first undefined",singleData?.theme, singleData?.mark);
-    
+      console.log("first undefined", singleData?.theme, singleData?.mark);
 
       const active = { id: selectId, active: "border border-4 border-black" };
       setFocus(active);
 
       const viewQuiz = { theme: "bg-[#cd7c7c]", mark: "Mark" };
 
-      fetch(`http://localhost:5000/seenQuiz/${selectId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(viewQuiz),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          // console.log("undefined user", data);
-        });
+      // seen quiz api call
+      seenQuiz(selectId, viewQuiz, refetch);
     }
-  }, [selectId, singleData]);
+  }, [selectId, singleData, refetch]);
 
   // mark for the quiz
   const handleMarkSelect = (singleData) => {
@@ -74,31 +68,17 @@ const LiveTest = () => {
     console.log("handle mark", _id, mark);
 
     if (mark === "Mark") {
-      fetch(`http://localhost:5000/markQuiz/${_id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mark: "UnMark" }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          // console.log("handle mark data", data);
-          refetch();
-        });
+      const markData = { mark: "UnMark" };
+      // mark quiz api call
+      markQuiz(_id, markData, refetch);
     } else {
-      fetch(`http://localhost:5000/markQuiz/${_id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mark: "Mark" }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log("handle unMark data", data);
-          refetch();
-        });
+      const markData = { mark: "Mark" };
+      // mark quiz api call
+      markQuiz(_id, markData, refetch);
     }
   };
-  
-// reload after get check quiz
+
+  // reload after get check quiz
   useEffect(() => {
     if (!selected.length) {
       fetch("http://localhost:5000/checkQuiz")
@@ -143,7 +123,7 @@ const LiveTest = () => {
       });
   };
 
-  // selectId -------
+  // selectId question -------
   const handleSelectQuestion = (id, newTheme, newMark) => {
     setSelectId(id);
     const active = { id: id, active: "border border-4 border-black" };
@@ -152,35 +132,17 @@ const LiveTest = () => {
     if (newTheme === undefined || newMark === undefined) {
       console.log("default click", newTheme, newMark);
       const viewQuiz = { theme: "bg-[#cd7c7c]", mark: "Mark" };
-
-      fetch(`http://localhost:5000/seenQuiz/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(viewQuiz),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          // console.log("default seen data", data);
-          refetch();
-        });
+      // seen quiz api call
+      seenQuiz(id, viewQuiz, refetch);
     } else {
       console.log("value ace click", newTheme, newMark);
       const viewQuiz = { theme: newTheme, mark: newMark };
-
-      fetch(`http://localhost:5000/seenQuiz/${id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(viewQuiz),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          // console.log("value available data", data);
-          refetch();
-        });
+      // seen quiz api call
+      seenQuiz(id, viewQuiz, refetch);
     }
   };
 
-  //  next option 
+  //  next option
   const handleClick = () => {
     const currentIndex = mainData.findIndex((item) => item._id === selectId);
     const nextIndex =
@@ -202,31 +164,13 @@ const LiveTest = () => {
     if (updateTheme === undefined || updateMark === undefined) {
       console.log("default", updateMark, updateTheme);
       const viewQuiz = { theme: "bg-[#cd7c7c]", mark: "Mark" };
-
-      fetch(`http://localhost:5000/seenQuiz/${currentId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(viewQuiz),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          // console.log("default mark data", data);
-          refetch();
-        });
+      // seen quiz api call
+      seenQuiz(currentId, viewQuiz, refetch);
     } else {
       console.log("value ace", updateMark, updateTheme);
       const viewQuiz = { theme: updateTheme, mark: updateMark };
-
-      fetch(`http://localhost:5000/seenQuiz/${currentId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(viewQuiz),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          // console.log("value available data", data);
-          refetch();
-        });
+      // seen quiz api call
+      seenQuiz(currentId, viewQuiz, refetch);
     }
   };
 
@@ -246,8 +190,6 @@ const LiveTest = () => {
         setSelected(selected.filter((obj) => obj?.questionId !== selectId));
       });
   };
-
-
 
   return (
     <div>
