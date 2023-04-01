@@ -27,7 +27,9 @@ const LiveTest = () => {
     queryKey: ["allQuiz"],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/allQuiz`);
+        const res = await fetch(
+          `https://campus-placement-course-server.vercel.app/allQuiz`
+        );
         const data = await res.json();
         setMainData(data);
         return data;
@@ -82,7 +84,7 @@ const LiveTest = () => {
   // reload after get check quiz
   useEffect(() => {
     if (!selected.length) {
-      fetch("http://localhost:5000/checkQuiz")
+      fetch("https://campus-placement-course-server.vercel.app/checkQuiz")
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);
@@ -101,22 +103,28 @@ const LiveTest = () => {
 
     // console.log(questionId, option, correctAnswer);
     const selectOption = { questionId, option, correctAnswer };
-    fetch(`http://localhost:5000/checkQuiz/${questionId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(selectOption),
-    })
+    fetch(
+      `https://campus-placement-course-server.vercel.app/checkQuiz/${questionId}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(selectOption),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log("select option data", data);
       });
 
     // color change for selected
-    fetch(`http://localhost:5000/themeQuiz/${questionId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ theme: "bg-[#a5cd7c]" }),
-    })
+    fetch(
+      `https://campus-placement-course-server.vercel.app/themeQuiz/${questionId}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ theme: "bg-[#a5cd7c]" }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log("theme change data", data);
@@ -177,11 +185,14 @@ const LiveTest = () => {
 
   // reset
   const handleReset = () => {
-    fetch(`http://localhost:5000/resetQuiz/${selectId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ theme: "bg-[#cd7c7c]" }),
-    })
+    fetch(
+      `https://campus-placement-course-server.vercel.app/resetQuiz/${selectId}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ theme: "bg-[#cd7c7c]" }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log("reset data", data);
