@@ -217,10 +217,17 @@ const LiveTest = () => {
               View Instructions
             </label>
             <ViewModal></ViewModal>
-            <label htmlFor="finished-Modal" className="btn bg-[#4caf50] hover:bg-[#47bd4b] border-none">
+            <label
+              htmlFor="finished-Modal"
+              className="btn bg-[#4caf50] hover:bg-[#47bd4b] border-none"
+            >
               Finished Test
             </label>
-            <FinishedModal></FinishedModal>
+            <FinishedModal
+              mainData={mainData}
+              selected={selected}
+              selectId={selectId}
+            ></FinishedModal>
           </div>
         </div>
 

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Time = () => {
   const [remainingTime, setRemainingTime] = useState(
-    localStorage.getItem("remainingTime") || 2 * 60 // 20 minutes in seconds
+    localStorage.getItem("remainingTime") || 15 * 60 // 15 minutes in seconds
   );
 
   useEffect(() => {
@@ -21,23 +22,22 @@ const Time = () => {
   const minutes = Math.floor((remainingTime % 3600) / 60);
   const seconds = remainingTime % 60;
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (remainingTime === 0) {
-      // alert("Time's up!");
-      const agree = window.alert.confirm("Your time has finished!");
-      if (agree) {
-        
-      }
+      alert("Time's up!");
+      navigate("/result");
     }
-  }, [remainingTime]);
+  }, [remainingTime, navigate]);
 
   return (
     <div>
       <div className="text-2xl font-bold text-gray-500 text-center space-y-4 my-4">
         <h3>Time Left</h3>
         <p>
-          {hours.toString().padStart(2, "0")}{" "} :{" "}
-          {minutes.toString().padStart(2, "0")}{" "}:{" "}
+          {hours.toString().padStart(2, "0")} :{" "}
+          {minutes.toString().padStart(2, "0")} :{" "}
           {seconds.toString().padStart(2, "0")}
         </p>
       </div>

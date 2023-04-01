@@ -32,7 +32,11 @@ const ResultPage = () => {
       <h1 className=" font-bold text-4xl">
         See all review for quiz. Upcoming page
       </h1>
-      <Link to="/liveTest">
+
+      <h1 className=" font-bold text-4xl mt-5 text-green-500">
+        Click the liveTest page finished button show details here.
+      </h1>
+      <Link to="/home">
         <button
           type="button"
           className="btn mt-10 btn-sm hover:bg-blue-500 bg-blue-500 text-white border-none"

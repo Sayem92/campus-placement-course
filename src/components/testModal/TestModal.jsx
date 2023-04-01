@@ -42,7 +42,7 @@ const TestModal = () => {
           {isSelected === "ins" ? (
             <>
               <h3 className="text-base font-bold my-3">
-                Time allocated for this examination is 30 mins
+                Time allocated for this examination is 15 mins
               </h3>
               <h3 className="text-base font-bold mt-3">
                 This paper consists of 1 section (11 questions)

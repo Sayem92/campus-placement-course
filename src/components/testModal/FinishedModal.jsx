@@ -1,12 +1,30 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const FinishedModal = () => {
+const FinishedModal = ({ mainData, selected, selectId }) => {
   const [isChecked, setIsChecked] = useState(false);
 
   function handleCheckboxChange(event) {
     setIsChecked(event.target.checked);
   }
+
+  // console.log(mainData);
+  // console.log(selected);
+  // console.log(selectId);
+
+  const count = mainData?.reduce((acc, cur) => {
+    if (cur.mark === "UnMark") {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
+
+  const noVisit = mainData?.reduce((acc, cur) => {
+    if (cur.theme === undefined) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
 
   return (
     <div>
@@ -21,19 +39,19 @@ const FinishedModal = () => {
             </div>
             <div className="space-y-5">
               <p className="border-b-2 py-4 bg-slate-100">No of Questions</p>
-              <p className="py-4 pb-6">11</p>
+              <p className="py-4 pb-6">{mainData?.length}</p>
             </div>
             <div className="space-y-5">
               <p className="border-b-2 py-4 bg-slate-100">Answered</p>
-              <p className="py-4 pb-6">2</p>
+              <p className="py-4 pb-6">{selected?.length ? selected?.length : 0}</p>
             </div>
             <div className="space-y-5">
               <p className="border-b-2 py-4 bg-slate-100"> Marked for Review</p>
-              <p className="py-4 pb-6">5</p>
+              <p className="py-4 pb-6">{count}</p>
             </div>
             <div className="space-y-5">
               <p className="border-b-2 py-4 bg-slate-100">Not Visited</p>
-              <p className="py-4 pb-6">3</p>
+              <p className="py-4 pb-6">{noVisit}</p>
             </div>
           </div>
 
