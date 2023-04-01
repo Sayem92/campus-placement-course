@@ -1,126 +1,88 @@
-{
-    "status": true,
-    "data": {
-    "total": 11,
-    "name": "Git",
-    "logo": "https://live.staticflickr.com/65535/52412639027_5692c15b3f_o.png",
-    "questions": [
-    {
+[
+  {
     "options": [
-    "গিট একটা হিট তামিল সিনেমা। যেটা আমি দেখিনি। আমার ফ্রেন্ডরা দেখছে। ",
-    "কোড যাতে হারায় না যায় এবং একাধিকজন একই কোডে কাজ করা সহজ করতে",
-    "গিট্টু মেরে দড়ি দিয়ে কোডকে তালগাছের সাথে বাইন্ধা রাখা"
+      "গিট একটা হিট তামিল সিনেমা। যেটা আমি দেখিনি। আমার ফ্রেন্ডরা দেখছে। ",
+      "কোড যাতে হারায় না যায় এবং একাধিকজন একই কোডে কাজ করা সহজ করতে",
+      "গিট্টু মেরে দড়ি দিয়ে কোডকে তালগাছের সাথে বাইন্ধা রাখা"
     ],
-    "id":"1" ,
     "question": "What is the purpose of git?",
     "correctAnswer": "কোড যাতে হারায় না যায় এবং একাধিকজন একই কোডে কাজ করা সহজ করতে"
-    },
-    {
+  },
+  {
     "options": [
-    "git--version",
-    "git -version",
-    "git --version",
-    "git -- version"
+      "git--version",
+      "git -version",
+      "git --version",
+      "git -- version"
     ],
-    "id":"2" ,
     "question": "What is the right command to check the git version?<span style='background-color: transparent; color: rgb(0, 0, 0);'>Hint: This is the command that you will need to check whether git is installed properly or not. Your answer will have the word git and also will have the word version.</span>",
     "correctAnswer": "git --version"
-    },
-    {
+  },
+  {
     "options": [
-    "git commit -m “final code”",
-    "git commit ---m“final code”",
-    "git “final code” -- commit",
-    "git push commit"
+      "git commit -m “final code”",
+      "git commit ---m“final code”",
+      "git “final code” -- commit",
+      "git push commit"
     ],
-    "id":"3" ,
     "question": "What is the command to commit code with the message “final code”:",
     "correctAnswer": "git commit -m “final code”"
-    },
-    {
-    "options": [
-    "git initialize",
-    "git init",
-    "git add readme.md",
-    "git start"
-    ],
-    "id": "4",
+  },
+  {
+    "options": ["git initialize", "git init", "git add readme.md", "git start"],
     "question": "Which command will you use to start (initialize) a new git repository?",
     "correctAnswer": "git init"
-    },
-    {
-    "options": [
-    "Live Pages",
-    "Hosting Pages",
-    "Github Pages",
-    "Github Deploy"
-    ],
-    "id":"5",
+  },
+  {
+    "options": ["Live Pages", "Hosting Pages", "Github Pages", "Github Deploy"],
     "question": "Which one is related to hosting a page in github?",
     "correctAnswer": "Github Pages"
-    },
-    {
+  },
+  {
     "options": [
-    "By clearing cache you can get some cash",
-    "If you want to catch some cash clear cache",
-    "Remove older data from a website",
-    "Just to make Chrome uncle happy"
+      "By clearing cache you can get some cash",
+      "If you want to catch some cash clear cache",
+      "Remove older data from a website",
+      "Just to make Chrome uncle happy"
     ],
-    "id": "6",
     "question": "Why will you consider clearing my browser cache?",
     "correctAnswer": "Remove older data from a website"
-    },
-    {
+  },
+  {
     "options": [
-    "Make a local backup of our code.",
-    "Separate a small feature from main code",
-    "Creating an ATM branch for withdrawing dollar "
+      "Make a local backup of our code.",
+      "Separate a small feature from main code",
+      "Creating an ATM branch for withdrawing dollar "
     ],
-    "id": "7",
     "question": "What is the purpose of git branching? (though the video is marked as advanced, you will need to watch the video)",
     "correctAnswer": "Separate a small feature from main code"
-    },
-    {
+  },
+  {
     "options": [
-    "git branch new-button",
-    "git checkout -b new-button-update",
-    "git checkout -d new-button-update"
+      "git branch new-button",
+      "git checkout -b new-button-update",
+      "git checkout -d new-button-update"
     ],
-    "id": "8",
     "question": "Which command will you use to create a new branch from the existing branch named 'new-button-update'",
     "correctAnswer": "git checkout -b new-button-update"
-    },
-    {
-    "options": [
-    "git commit push",
-    "git checkout push",
-    "git push",
-    "git pull"
-    ],
-    "id": "9",
+  },
+  {
+    "options": ["git commit push", "git checkout push", "git push", "git pull"],
     "question": "Which command will you use to send code to github?",
     "correctAnswer": "git push"
-    },
-    {
-    "options": [
-    "git branch",
-    "git checkout branch",
-    "git checkout."
-    ],
-    "id": "10",
+  },
+  {
+    "options": ["git branch", "git checkout branch", "git checkout."],
     "question": "Which Command is used to check the list of branches?. (its ok, if you don't remember, feel free to search online)",
     "correctAnswer": "git branch"
-    },
-    {
+  },
+  {
     "options": [
-    "git checkout -b [branch name]",
-    "git checkout switch [branch name]",
-    "git checkout [branch name]"
+      "git checkout -b [branch name]",
+      "git checkout switch [branch name]",
+      "git checkout [branch name]"
     ],
-    "id":"11" ,
     "question": "Which command will you use to change a branch?(if needed google it)",
     "correctAnswer": "git checkout [branch name]"
-    }
-    ]
-    }
-    }
+  }
+]

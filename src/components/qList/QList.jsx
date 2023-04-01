@@ -1,93 +1,66 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-const QList = ({
-  handleSelectQuestion,
-  handleOptionSelect,
-  selectId,
-  focus,
-  load,
-  handleMarkSelect,
-}) => {
-  const [numQAll, setNumQAll] = useState({});
-  // Load state from localStorage
-  useEffect(() => {
-    const num1Q = JSON.parse(localStorage.getItem("num1q"));
-    const num2Q = JSON.parse(localStorage.getItem("num2q"));
-    const num3Q = JSON.parse(localStorage.getItem("num3q"));
-    const num4Q = JSON.parse(localStorage.getItem("num4q"));
-    const num5Q = JSON.parse(localStorage.getItem("num5q"));
-    const num6Q = JSON.parse(localStorage.getItem("num6q"));
-    const num7Q = JSON.parse(localStorage.getItem("num7q"));
-    const num8Q = JSON.parse(localStorage.getItem("num8q"));
-    const num9Q = JSON.parse(localStorage.getItem("num9q"));
-    const num10Q = JSON.parse(localStorage.getItem("num10q"));
-    const num11Q = JSON.parse(localStorage.getItem("num11q"));
-    const all = {
-      num1Q,
-      num2Q,
-      num3Q,
-      num4Q,
-      num5Q,
-      num6Q,
-      num7Q,
-      num8Q,
-      num9Q,
-      num10Q,
-      num11Q,
-    };
-    setNumQAll(all);
-  }, [selectId, handleOptionSelect]);
-
-  // console.log(numQAll);
-  // console.log(focus);
-
-  // <button
-  //   onClick={() => handleSelectQuestion("4")}
-  //   className={`px-5 py-3 w-14 ${focus?.id === "4" ? focus?.active : ""} ${
-  //     numQAll?.num4Q === null ? "bg-gray-300" : numQAll?.num4Q?.theme
-  //   } ${numQAll?.num4Q?.mark === "mark" ? "border-r-8 border-black" : ""}`}
-  // >
-  //   4
-  // </button>;
+const QList = ({ handleSelectQuestion, focus, mainData }) => {
+  //  console.log(focus);
+  //  console.log(mainData[1]?.theme);
 
   return (
     <div className="grid grid-cols-3 lg:grid-cols-4 gap-y-1 gap-x-2 px-5 my-3">
-      <div>
+      {mainData?.map((data, index) => (
+        <div key={data?._id}>
+          <button
+            onClick={() =>
+              handleSelectQuestion(`${data?._id}`, data?.theme, data?.mark)
+            }
+            className={`px-5 py-3 w-14  ${
+              focus?.id === `${data?._id}` ? focus?.active : ""
+            }
+            ${data?.theme === undefined ? "bg-gray-300" : data?.theme}  ${
+              data?.mark === "UnMark" ? "border-r-8 border-black" : ""
+            }`}
+          >
+            {index + 1}
+          </button>
+        </div>
+      ))}
+
+      {/* <div>
         <button
           onClick={() =>
             handleSelectQuestion(
-              "1",
-              `${numQAll?.num1Q?.theme}`,
-              `${numQAll?.num1Q?.mark}`
+              `${mainData[0]?._id}`,
+              mainData[0]?.theme,
+              mainData[0]?.mark
             )
           }
-          className={`px-5 py-3 w-14 ${
-            focus?.id === "1" ? focus?.active : ""
-          } ${
-            numQAll?.num1Q === null ? "bg-[#cd7c7c]" : numQAll?.num1Q?.theme
-          }  ${
-            numQAll?.num1Q?.mark === "mark" ? "border-r-8 border-black" : ""
-          }`}
+          className={`px-5 py-3 w-14  ${
+            focus?.id === `${mainData[0]?._id}` ? focus?.active : ""
+          }
+          ${
+            mainData[0]?.theme === undefined
+              ? "bg-gray-300"
+              : mainData[0]?.theme
+          }  ${mainData[0]?.mark === "UnMark" ? "border-r-8 border-black" : ""}`}
         >
           1
         </button>
-      </div>
-      <div>
+      </div> */}
+      {/* <div>
         <button
           onClick={() =>
             handleSelectQuestion(
-              "2",
-              `${numQAll?.num2Q?.theme}`,
-              `${numQAll?.num2Q?.mark}`
+              `${mainData[1]?._id}`,
+              mainData[1]?.theme,
+              mainData[1]?.mark
             )
           }
           className={`px-5 py-3 w-14 ${
-            focus?.id === "2" ? focus?.active : ""
+            focus?.id === `${mainData[1]?._id}` ? focus?.active : ""
           } ${
-            numQAll?.num2Q === null ? "bg-gray-300" : numQAll?.num2Q?.theme
-          } ${
-            numQAll?.num2Q?.mark === "mark" ? "border-r-8 border-black" : ""
-          }`}
+            mainData[1]?.theme === undefined
+              ? "bg-gray-300"
+              : mainData[1]?.theme
+          }  ${mainData[1]?.mark === "UnMark" ? "border-r-8 border-black" : ""}`}
         >
           2
         </button>
@@ -96,18 +69,18 @@ const QList = ({
         <button
           onClick={() =>
             handleSelectQuestion(
-              "3",
-              `${numQAll?.num3Q?.theme}`,
-              `${numQAll?.num3Q?.mark}`
+              `${mainData[2]._id}`,
+              mainData[2]?.theme,
+              mainData[2]?.mark
             )
           }
           className={`px-5 py-3 w-14 ${
-            focus?.id === "3" ? focus?.active : ""
+            focus?.id === `${mainData[2]?._id}` ? focus?.active : ""
           } ${
-            numQAll?.num3Q === null ? "bg-gray-300" : numQAll?.num3Q?.theme
-          } ${
-            numQAll?.num3Q?.mark === "mark" ? "border-r-8 border-black" : ""
-          }`}
+            mainData[2]?.theme === undefined
+              ? "bg-gray-300"
+              : mainData[2]?.theme
+          }  ${mainData[2]?.mark === "UnMark" ? "border-r-8 border-black" : ""}`}
         >
           3
         </button>
@@ -116,18 +89,18 @@ const QList = ({
         <button
           onClick={() =>
             handleSelectQuestion(
-              "4",
-              `${numQAll?.num4Q?.theme}`,
-              `${numQAll?.num4Q?.mark}`
+              `${mainData[3]?._id}`,
+              mainData[3]?.theme,
+              mainData[3]?.mark
             )
           }
           className={`px-5 py-3 w-14 ${
-            focus?.id === "4" ? focus?.active : ""
+            focus?.id === `${mainData[3]?._id}` ? focus?.active : ""
           } ${
-            numQAll?.num4Q === null ? "bg-gray-300" : numQAll?.num4Q?.theme
-          } ${
-            numQAll?.num4Q?.mark === "mark" ? "border-r-8 border-black" : ""
-          }`}
+            mainData[3]?.theme === undefined
+              ? "bg-gray-300"
+              : mainData[3]?.theme
+          }  ${mainData[3]?.mark === "UnMark" ? "border-r-8 border-black" : ""}`}
         >
           4
         </button>
@@ -136,14 +109,18 @@ const QList = ({
         <button
           onClick={() =>
             handleSelectQuestion(
-              "5",
-              `${numQAll?.num5Q?.theme}`,
-              `${numQAll?.num5Q?.mark}`
+              `${mainData[4]?._id}`,
+              mainData[4]?.theme,
+              mainData[4]?.mark
             )
           }
           className={`px-5 py-3 w-14 ${
-            focus?.id === "5" ? focus?.active : ""
-          } ${numQAll?.num5Q === null ? "bg-gray-300" : numQAll?.num5Q?.theme}`}
+            focus?.id === `${mainData[4]?._id}` ? focus?.active : ""
+          } ${
+            mainData[4]?.theme === undefined
+              ? "bg-gray-300"
+              : mainData[4]?.theme
+          }  ${mainData[4]?.mark === "UnMark" ? "border-r-8 border-black" : ""}`}
         >
           5
         </button>
@@ -152,16 +129,18 @@ const QList = ({
         <button
           onClick={() =>
             handleSelectQuestion(
-              "6",
-              `${numQAll?.num6Q?.theme}`,
-              `${numQAll?.num6Q?.mark}`
+              `${mainData[5]?._id}`,
+              mainData[5]?.theme,
+              mainData[5]?.mark
             )
           }
           className={`px-5 py-3 w-14 ${
-            focus?.id === "6" ? focus?.active : ""
+            focus?.id === `${mainData[5]?._id}` ? focus?.active : ""
           }  ${
-            numQAll?.num6Q === null ? "bg-gray-300" : numQAll?.num6Q?.theme
-          }`}
+            mainData[5]?.theme === undefined
+              ? "bg-gray-300"
+              : mainData[5]?.theme
+          }  ${mainData[5]?.mark === "UnMark" ? "border-r-8 border-black" : ""}`}
         >
           6
         </button>
@@ -170,14 +149,18 @@ const QList = ({
         <button
           onClick={() =>
             handleSelectQuestion(
-              "7",
-              `${numQAll?.num7Q?.theme}`,
-              `${numQAll?.num7Q?.mark}`
+              `${mainData[6]?._id}`,
+              mainData[6]?.theme,
+              mainData[6]?.mark
             )
           }
           className={`px-5 py-3 w-14 ${
-            focus?.id === "7" ? focus?.active : ""
-          } ${numQAll?.num7Q === null ? "bg-gray-300" : numQAll?.num7Q?.theme}`}
+            focus?.id === `${mainData[6]?._id}` ? focus?.active : ""
+          } ${
+            mainData[6]?.theme === undefined
+              ? "bg-gray-300"
+              : mainData[6]?.theme
+          }  ${mainData[6]?.mark === "UnMark" ? "border-r-8 border-black" : ""}`}
         >
           7
         </button>
@@ -186,16 +169,18 @@ const QList = ({
         <button
           onClick={() =>
             handleSelectQuestion(
-              "8",
-              `${numQAll?.num8Q?.theme}`,
-              `${numQAll?.num8Q?.mark}`
+              `${mainData[7]?._id}`,
+              mainData[7]?.theme,
+              mainData[7]?.mark
             )
           }
           className={`px-5 py-3 w-14 ${
-            focus?.id === "8" ? focus?.active : ""
-          }  ${
-            numQAll?.num8Q === null ? "bg-gray-300" : numQAll?.num8Q?.theme
-          }`}
+            focus?.id === `${mainData[7]?._id}` ? focus?.active : ""
+          } ${
+            mainData[7]?.theme === undefined
+              ? "bg-gray-300"
+              : mainData[7]?.theme
+          }  ${mainData[7]?.mark === "UnMark" ? "border-r-8 border-black" : ""}`}
         >
           8
         </button>
@@ -204,16 +189,18 @@ const QList = ({
         <button
           onClick={() =>
             handleSelectQuestion(
-              "9",
-              `${numQAll?.num9Q?.theme}`,
-              `${numQAll?.num9Q?.mark}`
+              `${mainData[8]?._id}`,
+              mainData[8]?.theme,
+              mainData[8]?.mark
             )
           }
           className={`px-5 py-3 w-14 ${
-            focus?.id === "9" ? focus?.active : ""
+            focus?.id === `${mainData[8]?._id}` ? focus?.active : ""
           }  ${
-            numQAll?.num9Q === null ? "bg-gray-300" : numQAll?.num9Q?.theme
-          }`}
+            mainData[8]?.theme === undefined
+              ? "bg-gray-300"
+              : mainData[8]?.theme
+          }  ${mainData[8]?.mark === "UnMark" ? "border-r-8 border-black" : ""}`}
         >
           9
         </button>
@@ -222,16 +209,18 @@ const QList = ({
         <button
           onClick={() =>
             handleSelectQuestion(
-              "10",
-              `${numQAll?.num10Q?.theme}`,
-              `${numQAll?.num10Q?.mark}`
+              `${mainData[9]?._id}`,
+              mainData[9]?.theme,
+              mainData[9]?.mark
             )
           }
           className={`px-5 py-3 w-14 ${
-            focus?.id === "10" ? focus?.active : ""
+            focus?.id === `${mainData[9]?._id}` ? focus?.active : ""
           } ${
-            numQAll?.num10Q === null ? "bg-gray-300" : numQAll?.num10Q?.theme
-          }`}
+            mainData[9]?.theme === undefined
+              ? "bg-gray-300"
+              : mainData[9]?.theme
+          }  ${mainData[9]?.mark === "UnMark" ? "border-r-8 border-black" : ""}`}
         >
           10
         </button>
@@ -240,20 +229,22 @@ const QList = ({
         <button
           onClick={() =>
             handleSelectQuestion(
-              "11",
-              `${numQAll?.num11Q?.theme}`,
-              `${numQAll?.num11Q?.mark}`
+              `${mainData[10]?._id}`,
+              mainData[10]?.theme,
+              mainData[10]?.mark
             )
           }
           className={`px-5 py-3 w-14 ${
-            focus?.id === "11" ? focus?.active : ""
+            focus?.id === `${mainData[10]?._id}` ? focus?.active : ""
           } ${
-            numQAll?.num11Q === null ? "bg-gray-300" : numQAll?.num11Q?.theme
-          }`}
+            mainData[10]?.theme === undefined
+              ? "bg-gray-300"
+              : mainData[10]?.theme
+          }  ${mainData[10]?.mark === "UnMark" ? "border-r-8 border-black" : ""}`}
         >
           11
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

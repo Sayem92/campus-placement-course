@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 const Time = () => {
-  const [remainingTime, setRemainingTime] = useState(20 * 60); // 1 hour in seconds
+  const [remainingTime, setRemainingTime] = useState(
+    localStorage.getItem("remainingTime") || 2 * 60 // 20 minutes in seconds
+  );
+
+  useEffect(() => {
+    localStorage.setItem("remainingTime", remainingTime);
+  }, [remainingTime]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -14,6 +20,12 @@ const Time = () => {
   const hours = Math.floor(remainingTime / 3600);
   const minutes = Math.floor((remainingTime % 3600) / 60);
   const seconds = remainingTime % 60;
+
+  useEffect(() => {
+    if (remainingTime === 0) {
+      alert("Time's up!");
+    }
+  }, [remainingTime]);
 
   return (
     <div>
