@@ -1,5 +1,6 @@
 import ErrorPage from "../components/errorPage/ErrorPage";
 import LiveTest from "../components/livetest/LiveTest";
+import ResultPage from "../components/result/ResultPage";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Home } = require("../components/home/Home");
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([{
         {
             path:'/liveTest',
             element:<LiveTest></LiveTest>
+        },
+        {
+            path:'/result',
+            element:<ResultPage></ResultPage>
         },
     ]
 }])

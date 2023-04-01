@@ -23,7 +23,11 @@ const Time = () => {
 
   useEffect(() => {
     if (remainingTime === 0) {
-      alert("Time's up!");
+      // alert("Time's up!");
+      const agree = window.alert.confirm("Your time has finished!");
+      if (agree) {
+        
+      }
     }
   }, [remainingTime]);
 

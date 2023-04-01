@@ -8,6 +8,7 @@ import ViewModal from "../testModal/ViewModal";
 import { useQuery } from "@tanstack/react-query";
 import { seenQuiz } from "../../api/SeenQuiz";
 import { markQuiz } from "../../api/MarkQuiz";
+import FinishedModal from "../testModal/FinishedModal";
 
 const LiveTest = () => {
   // filter data
@@ -216,9 +217,10 @@ const LiveTest = () => {
               View Instructions
             </label>
             <ViewModal></ViewModal>
-            <button className="btn bg-[#4caf50] hover:bg-[#47bd4b] border-none">
+            <label htmlFor="finished-Modal" className="btn bg-[#4caf50] hover:bg-[#47bd4b] border-none">
               Finished Test
-            </button>
+            </label>
+            <FinishedModal></FinishedModal>
           </div>
         </div>
 
